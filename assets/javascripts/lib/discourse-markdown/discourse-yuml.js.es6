@@ -1,8 +1,9 @@
-import { registerOption } from 'pretty-text/pretty-text'
+const rule = {
 
-registerOption((siteSettings, opts) => {
-    opts.features["discourse-yuml"] = true;
-});
+  after: function(state) {
+    state.push('["discourse-yuml"]', -1);
+  }
+};
 
 function replaceYumlDiagram(text) {
     while (text !== (text = text.replace(/\[yuml\]([\s\S]*?)\[\/yuml\]/ig, function(match, contents) {
